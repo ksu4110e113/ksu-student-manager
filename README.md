@@ -2,8 +2,6 @@
 
 本專案為崑山科技大學課程期中報告，使用 Python 的 Streamlit 框架與 MySQL 資料庫開發的學生資料管理系統。
 
-![KSU學生資料管理系統](https://raw.githubusercontent.com/username/ksu-student-manager/main/screenshots/app_demo.png)
-
 ---
 
 ## 📌 專案簡介
