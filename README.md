@@ -35,7 +35,6 @@ ksu-student-manager/
 ├─ main.py                  # 主程式（Streamlit + CRUD 操作）
 ├─ requirements.txt         # 套件需求清單
 └─ README.md                # 專案說明文件
-
 ```
 
 ---
