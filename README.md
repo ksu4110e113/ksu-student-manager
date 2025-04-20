@@ -6,74 +6,92 @@
 
 ## 📌 專案簡介
 
-本系統為 Web 應用程式，整合 MySQL 資料庫進行學生資料管理。允許使用者對學生記錄進行完整的 CRUD（新增、查詢、更新、刪除）操作，並具備欄位驗證、防呆與條件查詢功能。
+本系統為 Web 應用程式，整合 MySQL 資料庫進行學生資料管理，支援以下功能：
+
+- 新增學生資料（含欄位驗證）
+- 查詢全部學生資料（支援條件過濾）
+- 修改學生資料（可只改部分欄位）
+- 刪除學生資料
 
 ---
 
-## 🧩 功能特點
+## 🧩 功能模組
 
-- ✅ **查詢全部學生**：以表格顯示所有學生資料，支援條件過濾
-- ➕ **新增學生**：驗證輸入資料（學號、姓名、年齡等）後建立新學生記錄
-- 📝 **修改學生**：支援部分欄位更新，未輸入欄位將保留原值
-- ❌ **刪除學生**：依學號刪除指定學生資料
-
----
-
-## ⚙️ 使用技術
-
-- 前端框架：Streamlit
-- 資料庫：MySQL（建議搭配 XAMPP）
-- 資料連接：mysql-connector-python
-- 資料處理：pandas
+| 模組功能 | 說明 |
+|----------|------|
+| 查詢學生 | 顯示所有學生，支援依條件篩選 |
+| 新增學生 | 檢查欄位正確性後新增學生 |
+| 修改學生 | 只更新有填寫的欄位，其他保留原值 |
+| 刪除學生 | 根據學號刪除學生記錄 |
 
 ---
 
-## 📁 專案結構
+## 🧱 資料庫結構（ERD）
 
-```
-ksu-student-manager/
-├─ main.py                  # 主程式（Streamlit + CRUD 操作）
-├─ requirements.txt         # 套件需求清單
-└─ README.md                # 專案說明文件
-```
+![ERD](https://raw.githubusercontent.com/username/ksu-student-manager/main/screenshots/ksu_std_table_erd.png)
 
----
+資料表名稱：`ksu_std_table`
 
-## 🗂 資料表欄位（ksu_std_table）
-
-| 欄位名稱           | 資料類型    | 描述             |
-|--------------------|-------------|------------------|
-| ksu_std_id         | VARCHAR(6)  | 學號（主鍵）     |
-| ksu_std_name       | VARCHAR(50) | 學生姓名         |
-| ksu_std_age        | INT         | 年齡             |
-| ksu_std_department | VARCHAR(50) | 科系代碼         |
-| ksu_std_signin     | DATE        | 註冊日期         |
-| ksu_std_grade      | INT         | 學生成績         |
+| 欄位名稱           | 資料類型    | 說明           |
+|--------------------|-------------|----------------|
+| `ksu_std_id`       | VARCHAR(6)  | 學號，主鍵     |
+| `ksu_std_name`     | VARCHAR(50) | 學生姓名       |
+| `ksu_std_age`      | INT         | 學生年齡       |
+| `ksu_std_department` | VARCHAR(50)| 科系代碼       |
+| `ksu_std_signin`   | DATE        | 註冊日期       |
+| `ksu_std_grade`    | INT         | 成績 (0~100)   |
 
 ---
 
 ## 🧪 資料驗證規則
 
-- 學號為必填且長度不超過 6 碼
-- 姓名不得為空
-- 年齡為 1～120 的正整數
-- 成績為 0～100 的整數
-- 註冊日期格式須為 YYYY-MM-DD
+- 學號：長度不超過 6 碼，不能重複
+- 姓名：不可為空
+- 年齡：1~120 間整數
+- 科系代碼：不可為空
+- 成績：0~100 整數
+- 註冊日期：符合 `YYYY-MM-DD` 格式
 
 ---
 
 ## 🚀 如何執行
 
-1. 匯入提供的 SQL 資料表（`ksu_database`）至本地 MySQL
-2. 安裝依賴套件：
+1. 安裝套件：
 ```bash
 pip install -r requirements.txt
 ```
-3. 執行系統：
+
+2. 匯入 MySQL 資料庫（使用提供的 `.sql` 檔）：
+
+   - 使用 phpMyAdmin 或
+   ```bash
+   mysql -u root -p ksu_database < ksu_database_20210914_full.sql
+   ```
+
+3. 執行程式：
 ```bash
 streamlit run main.py
 ```
-4. 使用側邊欄選單進行操作
 
 ---
 
+## 📂 專案結構
+
+```
+ksu-student-manager/
+├─ main.py
+├─ requirements.txt
+├─ ksu_database_20210914_full.sql
+├─ README.md
+└─ screenshots/
+   ├─ app_demo.png
+   └─ ksu_std_table_erd.png
+```
+
+---
+
+## 🧠 作者說明
+
+本專案為課堂期中專案，後續將持續整理其他課程資料庫設計與系統功能擴充，如登入系統、多資料表設計等。
+
+---
