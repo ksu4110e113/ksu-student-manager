@@ -28,8 +28,6 @@
 
 ## 🧱 資料庫結構（ERD）
 
-![ERD](https://raw.githubusercontent.com/username/ksu-student-manager/main/screenshots/ksu_std_table_erd.png)
-
 資料表名稱：`ksu_std_table`
 
 | 欄位名稱           | 資料類型    | 說明           |
@@ -82,10 +80,7 @@ ksu-student-manager/
 ├─ main.py
 ├─ requirements.txt
 ├─ ksu_database_20210914_full.sql
-├─ README.md
-└─ screenshots/
-   ├─ app_demo.png
-   └─ ksu_std_table_erd.png
+└─ README.md
 ```
 
 ---
